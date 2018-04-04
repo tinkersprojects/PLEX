@@ -13,7 +13,10 @@ By decreasing the inputs and outputs from 32 to 16 will allow the SD storage to 
 Most Arduino devices use either 5V or 3.3V to power them and this board can deliver this power to them. The board can regulate up to 12V down to 5V and 3.3V.
 
 ### LCD Display	
-This board is the same dimensions as a 16×2 LCD and attaches seamlessly to the back of it.
+This board is the same dimensions as a 16×2 LCD and attaches seamlessly to the back of it. Use the LiquidCrystal Arduino library with the code below to run the LCD.
+```
+LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
+```
 
 ### Micro USB interface	
 The Micro USB can be used to program the Atmega328 microcontroller with the Arduino IDE. It can also be used for debugging and other serial functions
@@ -30,31 +33,31 @@ The digital selecting are used to select the pin to be controlled. The analogue 
 
 ## Fuctions
 #### void setupPlex();
-
+This fuction is required to set all pins to the corret format. This fuction needs to be placed in setup before any PLEX library fuctions.
 #### void selectA(byte A);
-
+This fuction only selects a pin in A, it doea not set or read the pin.
 #### void selectB(byte B);
-
+This fuction only selects a pin in B, it doea not set or read the pin.
 #### void selectC(byte C);
-
+This fuction only selects a pin in C, it doea not set or read the pin.
 #### void selectD(byte D);
-
+This fuction only selects a pin in D, it doea not set or read the pin.
 #### boolean digitalReadA(byte A);
-
+This fuction Digitaly reads the selected pin in A. The fuction will return either a HIGH or LOW.
 #### boolean digitalReadB(byte B);
-
+This fuction Digitaly reads the selected pin in B. The fuction will return either a HIGH or LOW.
 #### boolean digitalReadC(byte C);
-
+This fuction Digitaly reads the selected pin in C. The fuction will return either a HIGH or LOW.
 #### boolean digitalReadD(byte D);
-
+This fuction Digitaly reads the selected pin in D. The fuction will return either a HIGH or LOW.
 #### int analogReadA(byte A);
-
+This fuction analogy reads the selected pin in A. The fuction will return a value from 0 to 1024.
 #### int analogReadB(byte B);
-
+This fuction analogy reads the selected pin in B. The fuction will return a value from 0 to 1024.
 #### int analogReadC(byte C);
-
+This fuction analogy reads the selected pin in C. The fuction will return a value from 0 to 1024.
 #### int analogReadD(byte D);
-
+This fuction analogy reads the selected pin in D. The fuction will return a value from 0 to 1024.
 #### void digitalWriteA(byte A,boolean set);
 
 #### void digitalWriteB(byte B,boolean set);
@@ -94,8 +97,7 @@ The digital selecting are used to select the pin to be controlled. The analogue 
 
 void setup() 
 {
-setupPlex();
-//LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
+    setupPlex();
 }
 
 void loop() 
@@ -111,8 +113,7 @@ void loop()
 
 void setup() 
 {
-setupPlex();
-//LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
+    setupPlex();
 }
 
 void loop() 
