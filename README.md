@@ -67,23 +67,23 @@ This fuction analogy reads the selected pin in D. The fuction will return a valu
 #### void digitalWriteD(byte D,boolean set);
 
 ## Set Pins
-- PinA A4
-- PinB A5
-- SePinAA 11
-- SePinAB 12
-- SePinAC 13
-- PinC A3
-- PinD A2
-- SePinBA 9
-- SePinBB A0
-- SePinBC A1
+- **PinA** A4
+- **PinB** A5
+- **SePinAA** 11
+- **SePinAB** 12
+- **SePinAC** 13
+- **PinC** A3
+- **PinD** A2
+- **SePinBA** 9
+- **SePinBB** A0
+- **SePinBC** A1
 
 
 ## Example
 ### Example 1: Analog Reader
 
 ```c++
-# include <Plex.h>
+#include <Plex.h>
 
 void setup() 
 {
@@ -125,7 +125,7 @@ void loop()
 ### Example 2: Digital Output
 
 ```c++
-# include <Plex.h>
+#include <Plex.h>
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
