@@ -66,27 +66,17 @@ This fuction analogy reads the selected pin in D. The fuction will return a valu
 
 #### void digitalWriteD(byte D,boolean set);
 
-## Set Pints
-
-#### PinA A4
-
-#### PinB A5
-
-#### SePinAA 11
-
-#### SePinAB 12
-
-#### SePinAC 13
-
-#### PinC A3
-
-#### PinD A2
-
-#### SePinBA 9
-
-#### SePinBB A0
-
-#### SePinBC A1
+## Set Pins
+- PinA A4
+- PinB A5
+- SePinAA 11
+- SePinAB 12
+- SePinAC 13
+- PinC A3
+- PinD A2
+- SePinBA 9
+- SePinBB A0
+- SePinBC A1
 
 
 ## Example
@@ -97,12 +87,38 @@ This fuction analogy reads the selected pin in D. The fuction will return a valu
 
 void setup() 
 {
+    Serial.begin(9600);
     setupPlex();
 }
 
 void loop() 
 {
-
+    for (int i=0; i < 8; i++)
+    {
+        int Value = analogReadA(i);
+        Serial.print(Value);
+        Serial.print(",");
+    }
+    for (int i=0; i < 8; i++)
+    {
+        int Value = analogReadB(i);
+        Serial.print(Value);
+        Serial.print(",");
+    }
+    for (int i=0; i < 8; i++)
+    {
+        int Value = analogReadC(i);
+        Serial.print(Value);
+        Serial.print(",");
+    }
+    for (int i=0; i < 8; i++)
+    {
+        int Value = analogReadD(i);
+        Serial.print(Value);
+        Serial.print(",");
+    }
+    
+    Serial.println();
 }
 ```
 
@@ -110,15 +126,36 @@ void loop()
 
 ```c++
 # include <Plex.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
 
 void setup() 
 {
     setupPlex();
+    lcd.begin(16, 2);
 }
 
 void loop() 
 {
-
+    for (int a=0; a < 8; a++)
+    {
+        for (int b=0; b < 8; b++)
+        {
+            digitalWriteA(b,LOW);
+            digitalWriteB(b,LOW);
+            digitalWriteC(b,LOW);
+            digitalWriteD(b,LOW);
+        }
+        lcd.setCursor(0, 1);
+        lcd.print("Output: ");
+        lcd.print(a);
+        digitalWriteA(a,HIGH);
+        digitalWriteB(a,HIGH);
+        digitalWriteC(a,HIGH);
+        digitalWriteD(a,HIGH);
+        delay(1000);
+    }
 }
 ```
 
