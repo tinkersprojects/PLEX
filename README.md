@@ -59,12 +59,13 @@ This fuction analogy reads the selected pin in C. The fuction will return a valu
 #### int analogReadD(byte D);
 This fuction analogy reads the selected pin in D. The fuction will return a value from 0 to 1024.
 #### void digitalWriteA(byte A,boolean set);
-
+This fuction Digitaly Writes to the selected pin in A. The fuction will set a HIGH or LOW *boolean set* value.
 #### void digitalWriteB(byte B,boolean set);
-
+This fuction Digitaly Writes to the selected pin in B. The fuction will set a HIGH or LOW *boolean set* value.
 #### void digitalWriteC(byte C,boolean set);
-
+This fuction Digitaly Writes to the selected pin in C. The fuction will set a HIGH or LOW *boolean set* value.
 #### void digitalWriteD(byte D,boolean set);
+This fuction Digitaly Writes to the selected pin in D. The fuction will set a HIGH or LOW *boolean set* value.
 
 ## Set Pins
 - **PinA** A4
@@ -162,3 +163,4 @@ void loop()
 # To Do list
 - Simpler LCD control
 - Make selecting faster
+- Make library lighter
