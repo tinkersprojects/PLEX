@@ -1,0 +1,55 @@
+#######################################
+# Library and class (KEYWORD1)
+#######################################
+
+Plex	KEYWORD1
+PLEX	KEYWORD1
+
+
+
+#######################################
+# Functions (KEYWORD2)
+#######################################
+
+PLEX	        KEYWORD2
+begin	        KEYWORD2
+selectA	        KEYWORD2
+selectB	        KEYWORD2
+selectC	        KEYWORD2
+selectD	        KEYWORD2
+digitalReadA	KEYWORD2
+digitalReadB	KEYWORD2
+digitalReadC	KEYWORD2
+digitalReadD	KEYWORD2
+analogReadA	    KEYWORD2
+analogReadB 	KEYWORD2
+analogReadC 	KEYWORD2
+analogReadD	    KEYWORD2
+digitalWriteA	KEYWORD2
+digitalWriteB	KEYWORD2
+digitalWriteC	KEYWORD2
+digitalWriteD	KEYWORD2
+
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+PinA	LITERAL1
+PinB	LITERAL1
+SePinAA	LITERAL1
+SePinAB	LITERAL1
+SePinAC	LITERAL1
+PinC	LITERAL1
+PinD	LITERAL1
+SePinBA	LITERAL1
+SePinBB	LITERAL1
+SePinBC	LITERAL1
+SD_CS	LITERAL1
+LCD_RS	LITERAL1
+LCD_EN	LITERAL1
+LCD_D4	LITERAL1
+LCD_D5	LITERAL1
+LCD_D6	LITERAL1
+LCD_D7	LITERAL1
