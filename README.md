@@ -15,10 +15,7 @@ By decreasing the inputs and outputs from 32 to 16 will allow the SD storage to 
 Most Arduino devices use either 5V or 3.3V to power them and this board can deliver this power to them. The board can regulate up to 12V down to 5V and 3.3V.
 
 ### LCD Display	
-This board is the same dimensions as a 16×2 LCD and attaches seamlessly to the back of it. Use the LiquidCrystal Arduino library with the code below to run the LCD.
-```
-LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
-```
+This board is the same dimensions as a 16×2 LCD and attaches seamlessly to the back of it.
 
 ### Micro USB interface	
 The Micro USB can be used to program the Atmega328 microcontroller with the Arduino IDE. It can also be used for debugging and other serial functions
