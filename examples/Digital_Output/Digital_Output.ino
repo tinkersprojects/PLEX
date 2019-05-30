@@ -1,12 +1,9 @@
 # include <Plex.h>
-#include <LiquidCrystal.h>
 
-LiquidCrystal lcd(2, 4, 5, 6, 7, 8);
+Plex PLEX;
 
 void setup() 
 {
-    setupPlex();
-    lcd.begin(16, 2);
 }
 
 void loop() 
@@ -15,18 +12,18 @@ void loop()
     {
         for (int b=0; b < 8; b++)
         {
-            digitalWriteA(b,LOW);
-            digitalWriteB(b,LOW);
-            digitalWriteC(b,LOW);
-            digitalWriteD(b,LOW);
+            PLEX.digitalWriteA(b,LOW);
+            PLEX.digitalWriteB(b,LOW);
+            PLEX.digitalWriteC(b,LOW);
+            PLEX.digitalWriteD(b,LOW);
         }
-        lcd.setCursor(0, 1);
-        lcd.print("Output: ");
-        lcd.print(a);
-        digitalWriteA(a,HIGH);
-        digitalWriteB(a,HIGH);
-        digitalWriteC(a,HIGH);
-        digitalWriteD(a,HIGH);
+        PLEX.lcd.setCursor(0, 1);
+        PLEX.lcd.print("Output: ");
+        PLEX.lcd.print(a);
+        PLEX.digitalWriteA(a,HIGH);
+        PLEX.digitalWriteB(a,HIGH);
+        PLEX.digitalWriteC(a,HIGH);
+        PLEX.digitalWriteD(a,HIGH);
         delay(1000);
     }
 }

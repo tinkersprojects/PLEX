@@ -5,7 +5,7 @@
 */
 #include "Plex.h"
 
-void setupPlex()
+Plex::Plex()
 {
   pinMode(SePinAA, OUTPUT);
   pinMode(SePinAB, OUTPUT);
@@ -15,607 +15,123 @@ void setupPlex()
   pinMode(SePinBB, OUTPUT);
   pinMode(SePinBC, OUTPUT);
 
+  lcd.begin(16, 2);
 }
 
-
-
-void digitalWriteA(byte A, boolean set)
+void Plex::begin()
 {
-  
+
+}
+
+void Plex::digitalWriteA(byte A, boolean set)
+{
   pinMode(PinA, OUTPUT);
-  switch (A) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectA(A);
   digitalWrite(PinA,set);
 }
 
-
-
-void digitalWriteB(byte B, boolean set)
+void Plex::digitalWriteB(byte B, boolean set)
 {
   pinMode(PinB, OUTPUT);
-  switch (B) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectB(B);
   digitalWrite(PinB,set);
 }
 
-void digitalWriteC(byte C, boolean set)
+void Plex::digitalWriteC(byte C, boolean set)
 {
   pinMode(PinC, OUTPUT);
-  switch (C) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectC(C);
   digitalWrite(PinC,set);
 }
 
-void digitalWriteD(byte D, boolean set)
+void Plex::digitalWriteD(byte D, boolean set)
 {
   pinMode(PinD, OUTPUT);
-  switch (D) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectD(D);
   digitalWrite(PinD,set);
 }
 
-
-boolean digitalReadA(byte A)
+boolean Plex::digitalReadA(byte A)
 {
   
   pinMode(PinA, INPUT);
-  switch (A) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectA(A);
   return digitalRead(PinA);
 }
 
-
-
-boolean digitalReadB(byte B)
+boolean Plex::digitalReadB(byte B)
 {
   pinMode(PinB, INPUT);
-  switch (B) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectB(B);
   return digitalRead(PinB);
 }
 
-boolean digitalReadC(byte C)
+boolean Plex::digitalReadC(byte C)
 {
   pinMode(PinC, INPUT);
-  switch (C) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectC(C);
   return digitalRead(PinC);
 }
 
-boolean digitalReadD(byte D)
+boolean Plex::digitalReadD(byte D)
 {
   
   pinMode(PinD, INPUT);
-  switch (D) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectD(D);
   return digitalRead(PinD);
 }
 
-
-
-
-
-
-int analogReadA(byte A)
+int Plex::analogReadA(byte A)
 {
   pinMode(PinA, INPUT);
-  switch (A) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectA(A);
   return analogRead(PinA);
 }
 
-
-
-int analogReadB(byte B)
+int Plex::analogReadB(byte B)
 {
   pinMode(PinB, INPUT);
-  switch (B) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
+  this->selectB(B);
   return analogRead(PinB);
 }
 
-int analogReadC(byte C)
+int Plex::analogReadC(byte C)
 {
   pinMode(PinC, INPUT);
-  switch (C) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectC(C);
   return analogRead(PinC);
 }
 
-int analogReadD(byte D)
+int Plex::analogReadD(byte D)
 {
   pinMode(PinD, INPUT);
-  switch (D) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
+  this->selectD(D);
   return analogRead(PinD);
 }
 
-
-
-
-void selectA(byte A)
+void Plex::selectA(byte A)
 {
-  switch (A) {
+  this->selectLeft(A);
+}
+
+void Plex::selectB(byte B)
+{
+  this->selectLeft(B);
+}
+
+void Plex::selectC(byte C)
+{
+  this->selectRight(C);
+}
+
+void Plex::selectD(byte D)
+{
+  this->selectRight(D);
+}
+
+void Plex::selectLeft(byte number)
+{
+  switch (number) {
     case 6:
       digitalWrite(SePinAA, LOW);
       digitalWrite(SePinAB, LOW);
@@ -659,101 +175,9 @@ void selectA(byte A)
   }
 }
 
-void selectB(byte B)
+void Plex::selectRight(byte number)
 {
-  switch (B) {
-    case 6:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 5:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 7:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 0:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, LOW);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 2:
-      digitalWrite(SePinAA, LOW);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-    case 1:
-      digitalWrite(SePinAA, HIGH);
-      digitalWrite(SePinAB, HIGH);
-      digitalWrite(SePinAC, HIGH);
-      break;
-  }
-}
-
-void selectC(byte C)
-{
-  switch (C) {
-    case 1:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 2:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 3:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 0:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, LOW);
-      break;
-    case 4:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 7:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, LOW);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 5:
-      digitalWrite(SePinBA, LOW);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-    case 6:
-      digitalWrite(SePinBA, HIGH);
-      digitalWrite(SePinBB, HIGH);
-      digitalWrite(SePinBC, HIGH);
-      break;
-  }
-}
-
-void selectD(byte D)
-{
-  switch (D) {
+  switch (number) {
     case 1:
       digitalWrite(SePinBA, LOW);
       digitalWrite(SePinBB, LOW);
