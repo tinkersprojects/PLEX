@@ -72,11 +72,21 @@ This function Digitally Writes to the selected pin in D. The function will set a
 - **SePinAA** 11
 - **SePinAB** 12
 - **SePinAC** 13
+
 - **PinC** A3
 - **PinD** A2
 - **SePinBA** 9
 - **SePinBB** A0
 - **SePinBC** A1
+
+- **SD_CS** 10
+
+- **LCD_RS** 2
+- **LCD_EN** 4
+- **LCD_D4** 5
+- **LCD_D5** 6
+- **LCD_D6** 7
+- **LCD_D7** 8
 
 
 ## Example
